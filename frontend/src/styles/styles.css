@@ -1,0 +1,423 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"); 
+
+:root{
+  --beige: #d4b983; 
+  --text: #0b0b0b;
+  --muted: #666;
+  --max-width: 100%;
+  --height: 100%;
+  --circle-size: 150px;
+
+}
+
+* { 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box; 
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* important to allow 100vh flex children to work correctly */
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* TOPBAR */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px;
+  height: 80px;
+  background-color: var(--beige);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-logo {
+  width: 70px;
+  height: 60px;
+}
+
+.topbar-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.profile-container {
+  position: relative;
+  margin-right: 20px;
+
+}
+.profile-icon {
+  font-size: 3rem;
+  color: #333;
+}
+
+/* SIDEBAR */
+
+/* Sidebar container */
+.sidebar {
+  width: 270px;
+  flex-shrink: 0;
+  min-height: 100%;
+  background: #f5f5f5;
+  border-right: 2px solid black;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation links */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 21px 20px;
+  color: #333;
+  text-decoration: none;
+
+}
+.sidebar nav a svg {
+  font-size: 1.3rem;       /* size of the icon */
+  color: black;              /* icon color */
+}
+
+/* Hover */
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+/* Logout button styled like sidebar links but highlighted */
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 20px;               
+  padding: 21px 20px;       
+  width: 100%;
+  font-size: 1.3rem;        
+  font-weight: normal;       
+  background: #f5f5f5;    
+  color: red;
+  text-align: left;          
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: auto;          /* push to bottom */
+}
+
+/* Icon inside logout button */
+.logout-button svg {
+  font-size: 2rem; 
+  color: red;             /* contrast with red background */
+}
+
+
+/* LAYOUT STYLING */
+.layout{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+.layout-content {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  background: whitesmoke;
+}
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background: whitesmoke;
+}
+/* BUTTON STYLING  */
+.btn {
+  background : var(--beige);
+  color: black;
+  position: relative;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background-color: whitesmoke;
+  border: 1px solid var(--beige);
+  border-radius: 2rem;
+  color: black ;
+  box-shadow: 0 0 8px var(--beige);
+  transform: translateY(-2px);
+
+}
+
+/* Reusable button */
+
+.btn.cancel {
+  background: #e0e0e0;
+  color: black;
+}
+
+/* EACH PAGE STYLING  */
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: lighter;
+  margin: 0 0 30px;
+}
+/* Header layout */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+
+/* Table styling */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.data-table th, .data-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+.data-table th {
+  background: #666;
+  color: #fff;
+}
+.edit {
+  color: blue;
+  cursor: pointer;
+}
+.delete {
+  color: red;
+  cursor: pointer;
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  width: 450px;
+}
+.modal h2 {
+  margin-top: 0;
+  font-weight: normal;
+}
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 15px;
+  text-align: left;
+}
+
+.modal-form label, .form-group label {
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+.modal-form input, .form-group input, .form-group select {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.modal-form input:focus, .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--beige);
+    box-shadow: 0 0 5px var(--beige);
+}
+.modal-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+/* STUDENT FORM STYLING */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+/* Announcement PAGE */
+.modal-form textarea {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+}
+
+.status-badge.published {
+  background-color: #28a745; /* green */
+}
+
+/* FILTER-SECTION */
+
+.filter-section{
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.filter-section label {
+  font-weight: normal;
+  margin-right: 10px;
+}
+.filter-section select {
+  padding: 6px;
+  border: 1.5px solid var(--beige);
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* STUDENT DASHBOARD STYLING */
+
+/* Container for the dashboard */
+.dashboard-container {
+  display: flex;
+  gap: 2rem; /* space between left and right columns */
+  padding: 1rem;
+  background-color: #f9f9f9; /* soft background */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Left and Right columns */
+.dashboard-left,
+.dashboard-right {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  flex: 1; /* both columns take equal width */
+}
+
+/* Welcome message */
+.dashboard-welcome {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2rem; /* adds space below the welcome message */
+}
+
+
+/* Each section inside columns */
+.dashboard-section {
+  margin-bottom: 1rem;
+}
+
+/* Section titles */
+.dashboard-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: black;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0;
+}
+
+/* List styles */
+.schedule-list,
+.courses-list,
+.announcements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-list li,
+.courses-list li,
+.announcements-list li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Calendar event inside calendar tiles */
+.react-calendar {
+  transform: scale(0.9);  /* 90% of original size */
+  transform-origin: top center; /* scale from top center */
+  border-radius: 15px;
+}
+.calendar-event {
+  background-color: #4f46e5; /* indigo */
+  color: black;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 2px;
+  display: inline-block;
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 1024px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .dashboard-left,
+  .dashboard-right {
+    width: 100%;
+  }
+}
